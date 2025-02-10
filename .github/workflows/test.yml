@@ -20,9 +20,15 @@ jobs:
         uses: khanzzirfan/openai@v0.0.4
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          openai-mode: "completion"
-          openai-params: '{"prompt":"Write a long essay on the following github commit message: ${{ github.event.commits.message}}", "model": "gpt-4"}'
+          openai-params: '{
+            "model": "gpt-4o",
+            "store": true,
+            "messages": [
+              {"role": "user", "content": "Write a long essay on the following GitHub commit message: ${{ github.event.commits[0].message }}"}
+            ]
+          }'
         id: openai
+        
       - name: Print
         run: |
           echo  "${{ steps.openai.outputs.completion }}"
