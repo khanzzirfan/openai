@@ -1,6 +1,6 @@
 {
   "name": "openai",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "description": "Uses OpenAI to generate a response",
   "author": "riccardolinares",
@@ -20,14 +20,14 @@
     "format:write": "npx prettier --write .",
     "format:check": "npx prettier --check .",
     "local-action": "npx local-action . src/main.ts .env",
-    "package": "npx ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "package": "npx ncc build src/main.ts -o dist --source-map --license licenses.txt",
     "package:watch": "npm run package -- --watch"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
     "openai": "^4.83.0",
-    "zod": "^3.21.4"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@octokit/rest": "^19.0.11",

@@ -1,4 +1,4 @@
-name: "OpenAI ChatCompletions"
+name: "OpenAI ChatCompletions-Action"
 description: "Use OpenAI to generate responses (Chat+Completions)"
 author: khanzzirfan
 branding:
@@ -8,10 +8,6 @@ inputs:
   openai-api-key:
     description: "Your openai api key"
     required: true
-  openai-mode:
-    description: "To use 'chat' or 'completion' mode"
-    required: true
-    default: "completion"
   openai-params:
     description: "Parameters to send to openai's completion nodejs function"
     required: true

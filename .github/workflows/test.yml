@@ -23,12 +23,9 @@ jobs:
           openai-params: '{
             "model": "gpt-4o",
             "store": true,
-            "messages": [
-              {"role": "user", "content": "Write a long essay on the following GitHub commit message: ${{ github.event.commits[0].message }}"}
-            ]
-          }'
+            "messages": [{"role": "user", "content": "Write a long essay on the following GitHub commit message: ${{ github.event.commits[0].message }}"}            ]          }'
         id: openai
-        
+
       - name: Print
         run: |
           echo  "${{ steps.openai.outputs.completion }}"
