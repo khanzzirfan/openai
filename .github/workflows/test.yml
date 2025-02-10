@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 jobs:
   openai-chat:
-    name: OpenAI Chat Completion
+    name: OpenAI Chat Completion v5
     runs-on: ubuntu-latest
     environment: Production
     steps:
