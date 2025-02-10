@@ -1,4 +1,4 @@
-name: "OpenAI Completions"
+name: "OpenAI ChatCompletions"
 description: "Use OpenAI to generate responses (Chat+Completions)"
 author: khanzzirfan
 branding:
