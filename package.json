@@ -1,6 +1,6 @@
 {
   "name": "openai",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Uses OpenAI to generate a response",
   "author": "riccardolinares",
