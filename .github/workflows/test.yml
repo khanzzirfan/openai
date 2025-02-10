@@ -21,7 +21,7 @@ jobs:
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           openai-mode: "completion"
-          openai-params: '{"prompt":"Write a long essay on the following github commit message: ${{ github.event.commits.message}}", "model": "gpt-4o"}'
+          openai-params: '{"prompt":"Write a long essay on the following github commit message: ${{ github.event.commits.message}}", "model": "gpt-4"}'
         id: openai
       - name: Print
         run: |
