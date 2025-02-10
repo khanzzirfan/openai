@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import { getInput, debug, setOutput, setFailed } from "@actions/core";
-import { chatSchema, completionsSchema, modeSchema } from "./schemas";
+import { chatSchema, modeSchema } from "./schemas";
 
 export async function run() {
   try {
@@ -23,43 +23,18 @@ export async function run() {
     const params = JSON.parse(getInput("openai-params"));
     debug(`With params: ${JSON.stringify(params)}`);
 
-    switch (mode) {
-      case "chat": {
-        const paramsSafeParseResult = chatSchema.safeParse(params);
-        if (!paramsSafeParseResult.success) {
-          setFailed(
-            `Invalid params for chat mode: ${paramsSafeParseResult.error}`
-          );
-          return;
-        }
-
-        const response = await client.chat.completions.create(
-          paramsSafeParseResult.data
-        );
-        const completion = response.choices[0].message?.content ?? "";
-
-        setOutput("completion", completion.trim());
-        break;
-      }
-
-      case "completion": {
-        const paramsSafeParseResult = completionsSchema.safeParse(params);
-        if (!paramsSafeParseResult.success) {
-          setFailed(
-            `Invalid params for completion mode: ${paramsSafeParseResult.error}`
-          );
-          return;
-        }
-
-        const response = await client.completions.create(
-          paramsSafeParseResult.data
-        );
-        const completion = response.choices[0].text ?? "";
-
-        setOutput("completion", completion.trim());
-        break;
-      }
+    const paramsSafeParseResult = chatSchema.safeParse(params);
+    if (!paramsSafeParseResult.success) {
+      setFailed(`Invalid params for chat mode: ${paramsSafeParseResult.error}`);
+      return;
     }
+
+    const response = await client.chat.completions.create(
+      paramsSafeParseResult.data
+    );
+
+    const completion = response.choices[0].message?.content ?? "";
+    setOutput("completion", completion.trim());
   } catch (error) {
     if (error instanceof Error) {
       setFailed(error.message);
